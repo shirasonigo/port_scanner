@@ -40,24 +40,27 @@ void port_scanner(char *tip,int first_port, int last_port){
             status = connect(sockfd, p->ai_addr, p->ai_addrlen);
             if (status<0) 
             {
-                printf("Port %d is NOT open.\n", tport);
+                printf("Port %s is NOT open.\n", tport);
                 close(sockfd);
                 continue;
             }
 
-            printf("Port %d is open.\n", tport);
+            printf("Port %s is open.\n", tport);
             close(sockfd);
             break;
         }
 
         if (sockfd < 0) 
         {
-            printf("Port %d is NOT open.\n", tport);
+            printf("Port %s is NOT open.\n", tport);
             continue; 
         }
         freeaddrinfo(res); // free the linked list
         first_port= first_port + 1;
     }
+
+
+
 }
 
 
